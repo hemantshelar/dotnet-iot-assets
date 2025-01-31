@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <PackageReference Include="Iot.Device.Bindings" Version="3.2.0-*" />
+    <PackageReference Include="SenseHatText" Version="0.1.0" />
   </ItemGroup>
 
 </Project>

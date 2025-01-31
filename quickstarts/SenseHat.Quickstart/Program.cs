@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Threading;
 using Iot.Device.Common;
 using Iot.Device.SenseHat;
+using Iot.Device.SenseHatText;
 using UnitsNet;
 
 // set this to the current sea level pressure in the area for correct altitude readings
@@ -12,9 +13,15 @@ using SenseHat sh = new SenseHat();
 int n = 0;
 int x = 3, y = 3;
 
+
+var sh1 = new SenseHatLedMatrixSysFs();
+sh1.ShowMessage("Hello Asha from Aaroh!", 90, Color.Blue);
+Thread.Sleep(10000);
+
 while (true)
 {
     Console.Clear();
+
 
     (int dx, int dy, bool holding) = JoystickState(sh);
 
