@@ -3,8 +3,6 @@ using System.Drawing;
 using System.Threading;
 using Iot.Device.Common;
 using Iot.Device.SenseHat;
-using Iot.Device.SenseHatText;
-using UnitsNet;
 
 // set this to the current sea level pressure in the area for correct altitude readings
 var defaultSeaLevelPressure = WeatherHelper.MeanSeaLevel;
@@ -13,10 +11,13 @@ using SenseHat sh = new SenseHat();
 int n = 0;
 int x = 3, y = 3;
 
-
-var sh1 = new SenseHatLedMatrixSysFs();
+/* NOT WORKING var sh1 = new SenseHatLedMatrixSysFs();
 sh1.ShowMessage("Hello Asha from Aaroh!", 90, Color.Blue);
 Thread.Sleep(10000);
+*/
+var msg = "Hello Asha from Aaroh!";
+Sense.Led.LedMatrix.ShowMessage(msg);
+
 
 while (true)
 {
