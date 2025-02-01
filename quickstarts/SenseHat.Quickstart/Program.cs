@@ -18,12 +18,16 @@ UnitsNet.RelativeHumidity humValue = default;
 var msg = "Hello Asha from Aaroh!";
 Sense.Led.LedMatrix.ShowMessage(msg);
 
+
+object cs = new object();
+
+var th = new Thread(ShowInfo);
+th.Start();
+
 while (true)
 {
     Console.Clear();
-    var th = new Thread(ShowInfo);
 
-    th.Start();
 
 
     (int dx, int dy, bool holding) = JoystickState(sh);
