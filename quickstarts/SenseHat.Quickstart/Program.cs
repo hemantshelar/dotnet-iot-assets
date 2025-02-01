@@ -11,12 +11,19 @@ using SenseHat sh = new SenseHat();
 int n = 0;
 int x = 3, y = 3;
 
+
+UnitsNet.Temperature tempValue = default;
+UnitsNet.RelativeHumidity humValue = default;
+
 var msg = "Hello Asha from Aaroh!";
 Sense.Led.LedMatrix.ShowMessage(msg);
 
 while (true)
 {
     Console.Clear();
+    var th = new Thread(ShowInfo);
+
+    th.Start();
 
 
     (int dx, int dy, bool holding) = JoystickState(sh);
@@ -32,10 +39,10 @@ while (true)
     sh.Fill(n % 2 == 0 ? Color.DarkBlue : Color.DarkRed);
     sh.SetPixel(x, y, Color.Yellow);
 
-    var tempValue = sh.Temperature;
+    tempValue = sh.Temperature;
     var temp2Value = sh.Temperature2;
     var preValue = sh.Pressure;
-    var humValue = sh.Humidity;
+    humValue = sh.Humidity;
     var accValue = sh.Acceleration;
     var angValue = sh.AngularRate;
     var magValue = sh.MagneticInduction;
@@ -83,4 +90,33 @@ while (true)
     }
 
     return (dx, dy, sh.HoldingButton);
+}
+
+void ShowInfo()
+{
+    int option = 0;
+    var slepDuration = 3000;
+    string msgToDisplay = string.Empty;
+    while (true)
+    {
+        switch (option)
+        {
+            case 0:
+                Console.WriteLine("Show Temperature Sensor 1");
+                msgToDisplay = $"Temperature Sensor 1: {tempValue.DegreesCelsius:0.#}\u00B0C";
+                break;
+            case 1:
+                Console.WriteLine("Show Time");
+                msgToDisplay = $"Time: {DateTime.Now:HH:mm:ss}";
+                break;
+            case 2:
+                Console.WriteLine("Show Humidity");
+                msgToDisplay = $"Relative humidity: {humValue.Percent:0.#}%";
+                break;
+        }
+        Sense.Led.LedMatrix.ShowMessage(msgToDisplay);
+
+        Thread.Sleep(slepDuration);
+        option = (option + 1) % 3;
+    }
 }
