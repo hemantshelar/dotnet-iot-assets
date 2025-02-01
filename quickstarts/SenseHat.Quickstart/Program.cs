@@ -36,8 +36,8 @@ while (true)
     x = (x + 8 + dx) % 8;
     y = (y + 8 + dy) % 8;
 
-    sh.Fill(n % 2 == 0 ? Color.DarkBlue : Color.DarkRed);
-    sh.SetPixel(x, y, Color.Yellow);
+    /*sh.Fill(n % 2 == 0 ? Color.DarkBlue : Color.DarkRed);
+    sh.SetPixel(x, y, Color.Yellow);*/
 
     tempValue = sh.Temperature;
     var temp2Value = sh.Temperature2;
