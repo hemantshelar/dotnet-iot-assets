@@ -11,13 +11,8 @@ using SenseHat sh = new SenseHat();
 int n = 0;
 int x = 3, y = 3;
 
-/* NOT WORKING var sh1 = new SenseHatLedMatrixSysFs();
-sh1.ShowMessage("Hello Asha from Aaroh!", 90, Color.Blue);
-Thread.Sleep(10000);
-*/
 var msg = "Hello Asha from Aaroh!";
 Sense.Led.LedMatrix.ShowMessage(msg);
-
 
 while (true)
 {
