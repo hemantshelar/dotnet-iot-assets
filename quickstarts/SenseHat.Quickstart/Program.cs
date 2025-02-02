@@ -107,16 +107,20 @@ void ShowInfo()
         {
             case 0:
                 Console.WriteLine("Show Temperature Sensor 1");
-                msgToDisplay = $"Temperature Sensor 1: {tempValue.DegreesCelsius:0.#}\u00B0C";
+                msgToDisplay = $"{tempValue.DegreesCelsius:0.#}\u00B0C";
+                slepDuration = 3000;
                 break;
             case 1:
                 Console.WriteLine("Show Time");
-                msgToDisplay = $"Time: {DateTime.Now:HH:mm:ss}";
+                msgToDisplay = $"{DateTime.Now:HH:mm:ss}";
+                slepDuration = 5000;
                 break;
             case 2:
                 Console.WriteLine("Show Humidity");
-                msgToDisplay = $"Relative humidity: {humValue.Percent:0.#}%";
+                msgToDisplay = $"RH {humValue.Percent:0.#}%";
+                slepDuration = 3000;
                 break;
+
         }
         Sense.Led.LedMatrix.ShowMessage(msgToDisplay);
 
